@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<title>PATS BARBEQUE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+  background-image: url("patsbbqlogo.jpg");
+  min-height: 70%;
+}
+
+.bgimgbody {
+  background-size: auto;
+  background-image: url("darkrepeating.jpg");
+  min-height: 100%;
+}
+
+.menu {
+  display: none;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#navbar {
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: block;
+  transition: top 0.3s;
+}
+</style>
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtx-AAgJ03PH9eOuTpr37q07L6ahsUCMU&callback=initMap&libraries=&v=weekly" defer></script>
+
+<style type="text/css">
+      /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;
+        /* The height is 400 pixels */
+        width: 100%;
+        /* The width is the width of the web page */
+      }
+</style>
+
+<script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of Uluru
+        const patslocation = { lat: 30.669, lng: -97.657 };
+        // The map, centered at spot
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 15,
+          center: patslocation,
+        });
+        // The marker, positioned at pats
+        const marker = new google.maps.Marker({
+          position: patslocation,
+          map: map,
+        });
+      }
+</script>
+
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-col w3-padding w3-black">
+    <div class="w3-col s3">
+      <a href="#" class="w3-button w3-block w3-black w3-round-large">HOME<i class ="w3-margin-left fa fa-home"></i></a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#menu" class="w3-button w3-block w3-black w3-round-large">MENU<i class="fa fa-utensils"></i></a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#where" class="w3-button w3-block w3-black w3-round-large">LOCATION<i class ="w3-margin-left fa fa-location-arrow"></i></a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#about" class="w3-button w3-block w3-black w3-round-large">ABOUT</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container " id="home">
+  <div class="w3-display-bottomright w3-center w3-padding-large">
+    <span class="w3-text-white">Georgetown, TX</span>
+  </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="bgimgbody w3-display-container w3-large ">
+
+<!-- Menu Container -->
+<div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+ 
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">THE MENU</span></h5>
+  
+    <div class="w3-row w3-center w3-card w3-padding w3-grey w3-round-large">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Plates');" id="myLink">
+        <div class="w3-col s6 tablink w3-hover-light-grey w3-round-large">Menu</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Meat');">
+        <div class="w3-col s6 tablink w3-hover-light-grey w3-round-large">Meat By the Pound</div>
+      </a>
+    </div>
+
+    <div id="Plates" class="w3-container menu w3-padding-48 w3-sand w3-card w3-round-large">
+      <img src="menu.jpg" class ="w3-round w3-card-4" style="width:75%;"height="600">
+    </div>
+
+    <div id="Meat" class="w3-container menu w3-padding-48 w3-sand w3-card w3-center w3-round-large">
+      
+    </div>  
+    <div class="w3-content w3-section" style="max-width:500px">
+  		<img class="mySlides" src="chicken.jpg" style="width:100%;height:500px;">
+  		<img class="mySlides" src="sausage.jpg" style="width:100%;height:500px;">
+  		<img class="mySlides" src="ribs.jpg" style="width:100%;height:500px;">
+	</div>
+
+	<script>
+	var myIndex = 0;
+	carousel();
+
+	function carousel() {
+	  var i;
+	  var x = document.getElementsByClassName("mySlides");
+	  for (i = 0; i < x.length; i++) {
+	    x[i].style.display = "none";  
+	  }
+	  myIndex++;
+	  if (myIndex > x.length) {myIndex = 1}    
+	  x[myIndex-1].style.display = "block";  
+	  setTimeout(carousel, 5000); // Change image every 5 seconds
+	}
+	</script>
+  </div>
+</div>
+
+<!-- Location Container -->
+<div class="w3-container" id="where" style="padding-bottom:32px;">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">WHERE TO FIND PAT</span></h5>
+    <div id="map"></div>
+  </div>
+</div>
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE PIT</span></h5>
+    <p>Some stuff about Pat here. Or info about the shop.</p>
+    <div class="w3-card-4 w3-leftbar w3-light-grey w3-round-large">
+      <br><p><i>"A good quote from Pat here.</i></p>
+      <p>Owner: Patrick Bracamontez</p><br>
+    </div>
+    <img src="sausagepit.jpg" style="width:100%;max-width:1000px" class="w3-margin-top w3-card-4 w3-round-large"
+  </div>
+</div>
+
+<!-- Contact Container -->
+<div class="w3-container w3-section" id="contact">
+	<h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">CONTACT INFO</span></h5>
+	<div class="w3-content" style="max-width:700px">
+		<form action="/action_page.php" class="w3-container w3-card-4 w3-light-grey w3-section w3-round-large w3-margin">
+		<h2 class="w3-center w3-card w3-round-large w3-grey">CONTACT ME</h2>
+		 
+		<div class="w3-row w3-section">
+		  <div class="w3-col" style="width:50px"><i class="w3-margin-left w3-xlarge fa fa-user"></i></div>
+		    <div class="w3-rest">
+		      <input class="w3-input w3-border w3-round-large" name="first" type="text" placeholder="Name">
+		    </div>
+		</div>
+
+		<div class="w3-row w3-section">
+		  <div class="w3-col" style="width:50px"><i class="w3-margin-left w3-xlarge fa fa-phone"></i></div>
+		    <div class="w3-rest">
+		      <input class="w3-input w3-border w3-round-large" name="phone" type="text" placeholder="Phone Number">
+		    </div>
+		</div>
+
+		<div class="w3-row w3-section">
+		  <div class="w3-col" style="width:50px"><i class="w3-margin-left w3-xlarge fa fa-pencil"></i></div>
+		    <div class="w3-rest">
+		      <input class="w3-input w3-border w3-round-large" name="message" type="text" placeholder="Message">
+		    </div>
+		</div>
+
+		<button class="w3-button w3-block w3-section w3-blue-grey w3-ripple w3-padding">Send</button>
+
+		</form>
+	</div>
+</div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey">
+</footer>
+
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-blue-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-blue-grey";
+}
+document.getElementById("myLink").click();
+</script>
+
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-50px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+</body>
+</html>
+
